@@ -19,23 +19,23 @@ return new class extends Migration
             $table->String("contact_1");
             $table->String("contact_2");
             $table->String("email")->unique();
-            $table->text('smtp_host');
-            $table->text('port');
-            $table->text('smtp_username');
-            $table->text('smtp_password');
-            $table->text('sms_api');
+            $table->text('smtp_host')->nullable();
+            $table->text('port')->nullable();
+            $table->text('smtp_username')->nullable();
+            $table->text('smtp_password')->nullable();
+            $table->text('sms_api')->nullable();
 
 
 
 
-            $table->text('');
 
-            $table->String("facebook");
-            $table->String("LinkedIn");
-            $table->String("Instagram");
-            $table->String("map");
-            $table->String("pan no");
-            $table->String("establishment");
+
+            $table->String("facebook")->nullable();
+            $table->String("LinkedIn")->nullable();
+            $table->String("Instagram")->nullable();
+            $table->String("map")->nullable();
+            $table->String("pan no")->nullable();
+            $table->String("establishment")->nullable();
 
 
 
