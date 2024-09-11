@@ -22,8 +22,10 @@ return new class extends Migration
             $table->string("language");
             $table->text("admisson_requirements");
             $table->text("scholraships");
-            $table->foreignId("college_id")->constrained()->cascadeOnDelete();
             $table->foreignId("university_id")->constrained()->cascadeOnDelete();
+
+            $table->foreignId("college_id")->constrained()->cascadeOnDelete();
+            // $table->foreignId("university_id")->constrained()->cascadeOnDelete();
             $table->text("notes")->nullable();
 
 
