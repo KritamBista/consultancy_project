@@ -5,11 +5,11 @@ use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [HomeController::class, 'company',]);
-Route::post(
-    '/message',
-    [HomeController::class, 'contact']
-)->name('message');
+// Route::get('/', [HomeController::class, 'company',]);
+// Route::post(
+//     '/message',
+//     [HomeController::class, 'contact']
+// )->name('message');
 // Route::get('/contact', [HomeController::class, 'company',]);
 
 
