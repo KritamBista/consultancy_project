@@ -20,12 +20,12 @@ return new class extends Migration
             $table->string("address");
             $table->string("city");
             $table->string("state");
-            $table->string("postal_code");
+            $table->string("postal_code")->nullable();;
             $table->string("country");
             $table->string("phone_number");
             $table->string("email");
-            $table->string("image");
-            $table->string("previous_school");
+            $table->string("image")->nullable();
+            $table->string("previous_school")->nullable();
             $table->string("highest qualification");
             $table->string("grades");
             $table->string("preferred_country");
@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string("course_of_interest");
             $table->string("langauge_profeciency");
             $table->foreignId("consultant_id")->constrained()->cascadeOnDelete();
-            $table->enum('application_status',['initial','in_progress','submitted','accepted','rejected'])->default('initial');
+            $table->enum('application_status', ['initial', 'in_progress', 'submitted', 'accepted', 'rejected'])->default('initial');
             $table->text("notes")->nullable();
 
 

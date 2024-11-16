@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->text('address');
+            $table->string('image');
             $table->text('city');
             $table->text('state');
             $table->text('postal_code');

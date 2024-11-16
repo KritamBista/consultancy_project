@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("Name");
             $table->string("Email")->optional()->unique();
-            $table->string("Phone");
+            $table->string("Phone")->nullable();
             $table->longText("message");
 
 

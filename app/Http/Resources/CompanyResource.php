@@ -27,6 +27,12 @@ class CompanyResource extends JsonResource
             "LinkedIn" => $this->linkedin,
             "Instagram" => $this->Instagram,
             "map" => $this->map,
+            'documentation' => $this->documentation,
+            'code_of_conduct' => $this->code_of_conduct,
+            'pre_post_departure' => $this->pre_post_departure,
+            'our_associations' => $this->our_associations,
+
+
 
         ];
     }

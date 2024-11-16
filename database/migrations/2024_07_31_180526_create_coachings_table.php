@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string("class_name");
             $table->string("description");
             $table->string("subject");
-            $table->string("schedule");
+            $table->string("schedule")->nullable();
             $table->date("start_date");
             $table->date("end_date");
             $table->foreignId("teacher_id")->constrained()->cascadeOnDelete();
-            $table->string("room");
-            $table->string("max_students");
+            $table->string("room")->nullable();
+            $table->string("max_students")->nullable();
             $table->string("enrolled_students");
             $table->text("notes")->nullable();
 

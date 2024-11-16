@@ -24,30 +24,63 @@ class CompanyResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('logo')
-                    ->required(),
+                    ->maxLength(255)
+                    ->default(null),
                 Forms\Components\TextInput::make('address')
-                    ->required(),
+                    ->maxLength(255)
+                    ->default(null),
                 Forms\Components\TextInput::make('contact_1')
-                    ->required(),
+                    ->maxLength(255)
+                    ->default(null),
                 Forms\Components\TextInput::make('contact_2')
-                    ->required(),
+                    ->maxLength(255)
+                    ->default(null),
                 Forms\Components\TextInput::make('email')
                     ->email()
-                    ->required(),
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('smtp_host')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('port')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('smtp_username')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('smtp_password')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('sms_api')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('documentation')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('code_of_conduct')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('pre_post_departure')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('our_associations')
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('facebook')
-                    ->required(),
+                    ->maxLength(255)
+                    ->default(null),
                 Forms\Components\TextInput::make('LinkedIn')
-                    ->required(),
+                    ->maxLength(255)
+                    ->default(null),
                 Forms\Components\TextInput::make('Instagram')
-                    ->required(),
+                    ->maxLength(255)
+                    ->default(null),
+                Forms\Components\TextInput::make('whatsapp')
+                    ->maxLength(255)
+                    ->default(null),
                 Forms\Components\TextInput::make('map')
-                    ->required(),
+                    ->maxLength(255)
+                    ->default(null),
                 Forms\Components\TextInput::make('pan no')
-                    ->required(),
+                    ->maxLength(255)
+                    ->default(null),
                 Forms\Components\TextInput::make('establishment')
-                    ->required(),
+                    ->maxLength(255)
+                    ->default(null),
             ]);
     }
 
@@ -72,6 +105,8 @@ class CompanyResource extends Resource
                 Tables\Columns\TextColumn::make('LinkedIn')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('Instagram')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('whatsapp')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('map')
                     ->searchable(),

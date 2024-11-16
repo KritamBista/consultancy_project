@@ -11,6 +11,8 @@ use App\Http\Resources\CourseResource;
 use App\Http\Resources\MissionResource as ResourcesMissionResource;
 use App\Http\Resources\ProcessResource;
 use App\Http\Resources\ServiceResource;
+use App\Models\Blog;
+use App\Models\Branch;
 use App\Models\Company;
 use App\Models\Contact;
 use App\Models\Country;
@@ -40,7 +42,7 @@ class ApiController extends Controller
     function missions()
     {
         $mission = Mission::all();
-        return response()->json(['success' => true, 'status' => 200, 'data' => new ResourcesMissionResource($mission)]);
+        return response()->json(['success' => true, 'status' => 200, 'data' =>  ResourcesMissionResource::collection($mission)]);
     }
 
     function process()
@@ -51,28 +53,84 @@ class ApiController extends Controller
     function countries()
     {
         $process = Country::all();
-        return response()->json(['success' => true, 'status' => 200, 'data' => new CountryResource($process)]);
+        return response()->json(['success' => true, 'status' => 200, 'data' =>  CountryResource::collection($process)]);
     }
     function contacts(Request $request)
     {
+        // return "kritam";
+
+        // return"?";
+
+        // $request->validate([
+        //     'name' => 'required|string|',
+        //     'email' => 'required|email|',
+        //     'phone' => 'required|string|',
+        //     'message' => 'required|string|',
+        // ]);
+        // Contact::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'phone' => $request->phone,
+        //     'message' => $request->message,
+        // ]);
+
+        // return response()->json(
+        //     [
+        //         'status' => '200',
+        //         'data' => ['message' => "Contact created sucessfully"]
+        //     ]
+        // );
+
         $request->validate([
             'Name' => 'required|string|max:255',
             'Email' => 'required|email|max:255',
             'Phone' => 'nullable|string|max:15',
-            'Message' => 'required|string',
+            'message' => 'required|string',
         ]);
         Contact::create([
-            'Name' => $request->name,
-            'Email' => $request->email,
-            'Phone' => $request->phone,
-            'Message' => $request->message,
+            'Name' => $request->Name,
+            'Email' => $request->Email,
+            'Phone' => $request->Phone,
+            'message' => $request->message,
         ]);
-        return response()->json(['success' => true, 'status' => 200, 'data' => ['message' => 'contact saved successfully']]);
+        return response()->json(['success' => true, 'status' => 200, 'data' => ['message' => 'Contact saved successfully']]);
     }
 
 
-    function courses(){
+    function courses()
+    {
         $course = Course::all();
         return response()->json(['success' => true, 'status' => 200, 'data' => new CourseResource($course)]);
+    }
+
+    function branches()
+    {
+        $branch = Branch::all();
+        return response()->json(['success' => true, 'status' => 200, 'data' => $branch]);
+    }
+    // function blogs()
+    // {
+    //     $blogs = ::all();
+    //     return response()->json(['success' => true, 'status' => 200, 'data' => $blogs]);
+    // }
+
+    function blogs()
+    {
+        $blog = Blog::all();
+        return response()->json(['data' => $blog]);
+    }
+
+    function blogDetail($id)
+    {
+        $blogDetail = Blog::find($id);
+        return response()->json(['data' => $blogDetail]);
+    }
+    
+
+    function countryDeatils($id)
+    {
+
+        $country = Country::with('colleges', 'universities')->find($id);
+        return response(['data' => $country]);
     }
 }
